@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Task from './components/Task';
 
 export default function App() {
@@ -24,8 +24,8 @@ export default function App() {
       
       <View style={styles.tasks}>
         <Text style={styles.sectionTitle}>ToDo</Text>
-      
-        <View style={styles.tasksBody}>
+      <ScrollView style={styles.scrollView}>
+      <View style={styles.tasksBody}>
           {/* tasks goes here */}
           {
             taskItems.map((item,index)=>{
@@ -41,6 +41,8 @@ export default function App() {
           <Task text={"hello task"}/>
           <Task text={"hello task"}/> */}
         </View> 
+      </ScrollView>
+        
       </View>
       <KeyboardAvoidingView
         behavior={Platform.OS==="ios"?"padding":"height"}
@@ -103,5 +105,8 @@ const styles = StyleSheet.create({
     justifyContent:"center"
   },
   addText:{},
+  scrollView:{
+    // marginHorizontal: 20,
+  },
  
 });
